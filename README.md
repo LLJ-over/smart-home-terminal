@@ -1,19 +1,33 @@
-# smart-home-terminal
-An ESP32 IoT project for smart home environment monitoring &amp; remote control,simulated via Wokwi
 # 基于 ESP32 的智能家居环境监测与远程控制终端 (Wokwi 仿真)
 
-这是一个基于 ESP32 的物联网入门项目，使用 Wokwi 平台进行全系统仿真验证。
+> 一个端到端的 IoT 物联网入门项目：包含传感器采集、本地 OLED 显示、Wi-Fi 联网、MQTT 云端通信及远程设备控制。
 
-## 📁 目录结构
-- `docs/`：项目文档（验收清单、系统框图、通信协议、引脚分配）
-- `firmware/`：ESP32 固件源码（持续更新中）
+##  核心功能
+- **本地感知**：基于 DHT11 实时采集温湿度，并在 SSD1306 OLED 屏幕上刷新显示。
+- **数据上云**：通过 Wi-Fi 接入 MQTT Broker，以 JSON 格式定时发布环境数据。
+- **远程控制**：订阅云端控制指令（`home/cmd`），实现对执行器（LED/继电器）的远程开关。
+- **可靠性设计**：包含 Wi-Fi 断线自动重连、MQTT 掉线重试机制。
+
+##  技术栈
+- **硬件平台**：ESP32 (Wokwi 虚拟仿真)
+- **编程语言**：C/C++ (Arduino Framework)
+- **通信协议**：MQTT, I2C, Wi-Fi
+- **传感器与执行器**：DHT11, SSD1306 OLED, LED
+
+##  目录结构
+- `docs/`：项目文档（验收清单、系统架构图、通信协议说明）
+- `firmware/`：ESP32 固件源码 (`main.ino` 与 `libraries.txt`)
 - `evidence/`：测试截图与运行日志证据
 - `wokwi/`：Wokwi 仿真项目链接
 
-## 🚀 当前进度
+##  在线体验 (Wokwi 仿真)
+点击下方链接即可直接在浏览器中运行并体验本项目（无需实体硬件）：
+Wokwi项目链接：https://wokwi.com/projects/479413816275309569
+
+## 📈 当前开发进度
 - [x] 阶段 0：需求梳理与架构设计
-- [ ] 阶段 1：点亮 OLED 与串口打印
-- [ ] 阶段 2：本地传感器闭环
-- [ ] 阶段 3：Wi-Fi 与 MQTT 通信链路
-- [ ] 阶段 4：远程控制闭环
-- [ ] 阶段 5：稳定性测试与文档完善
+- [x] 阶段 1：点亮 OLED 与串口通信
+- [x] 阶段 2：本地传感器感知闭环
+- [x] 阶段 3：Wi-Fi 与 MQTT 数据上行链路
+- [x] 阶段 4：MQTT 指令下行与远程控制
+- [ ] 阶段 5：FreeRTOS 多任务架构重构 (进阶规划中)
