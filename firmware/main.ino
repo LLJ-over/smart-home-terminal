@@ -16,8 +16,8 @@ Adafruit_SSD1306 display(128, 64, &Wire, -1);
 // --- 网络配置 ---
 const char* ssid = "Wokwi-GUEST";
 const char* mqtt_server = "broker.emqx.io";
-const char* topic_env = "home/env/ll_test"; // 记得换成你自己的主题
-const char* topic_cmd = "home/cmd/ll_test"; // 记得换成你自己的主题
+const char* topic_env = "home/env/ll_test"; // 
+const char* topic_cmd = "home/cmd/ll_test"; // 
 
 WiFiClient espClient;
 PubSubClient client(espClient);
